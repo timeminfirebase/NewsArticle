@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true"
+    app:cardMaxElevation="5dp"
+    android:layout_height="wrap_content">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border"
+    android:orientation="vertical">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:padding="5dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_article_score_list_item_article"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:background="@drawable/ic_baseline_circle_24"
+            android:paddingStart="4dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="4dp"
+            android:paddingBottom="20dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:text="00"
+            android:textStyle="bold"
+            app:autoSizeMaxTextSize="24sp"
+            app:autoSizeMinTextSize="18sp"
+            app:autoSizeStepGranularity="2sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_article_title_list_item_article"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_article_title_list_item_article"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:lines="3"
+            android:text="test"
+            android:textColor="@color/textOnSecondary"
+            android:textStyle="bold"
+            app:autoSizeMaxTextSize="20sp"
+            app:autoSizeMinTextSize="15sp"
+            app:autoSizeStepGranularity="1sp"
+            app:layout_constraintEnd_toStartOf="@id/iv_article_comment_list_item_article"
+            app:layout_constraintStart_toEndOf="@id/tv_article_score_list_item_article"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_article_time_list_item_article"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorSecondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_article_user_list_item_article"
+            app:layout_constraintStart_toEndOf="@id/tv_article_score_list_item_article"
+            app:layout_constraintTop_toBottomOf="@id/tv_article_title_list_item_article" />
+
+        <TextView
+            android:id="@+id/tv_article_user_list_item_article"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorSecondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_article_time_list_item_article"
+            app:layout_constraintTop_toBottomOf="@id/tv_article_title_list_item_article" />
+
+        <ImageView
+            android:id="@+id/iv_article_comment_list_item_article"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:src="@mipmap/baseline_comment_black_24"
+            app:tint="@color/colorPrimaryLight"
+            android:contentDescription="@string/comment_icon_content_desc"
+            app:layout_constraintBottom_toTopOf="@id/tv_article_comments_count_list_item_article"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_article_comments_count_list_item_article"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorSecondary"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_article_comment_list_item_article"
+            app:layout_constraintVertical_chainStyle="spread" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
+</androidx.cardview.widget.CardView>

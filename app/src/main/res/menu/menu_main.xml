@@ -1,0 +1,34 @@
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+   >
+
+
+
+            <item
+            android:id="@+id/action_NewStory"
+            android:title="@string/action_NewStory"
+            app:showAsAction="never"/>
+        <item
+            android:id="@+id/action_BestStory"
+            android:title="@string/action_BestStory"
+            app:showAsAction="never"/>
+        <item
+            android:id="@+id/action_askStory"
+            android:title="@string/action_askStory"
+            app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_ShowStory"
+        android:title="@string/action_ShowStory"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_JobStory"
+        android:title="@string/action_JobStory"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_TopStory"
+        android:title="@string/action_TopStory"
+        app:showAsAction="never"/>
+</menu>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryLight">#4A5FD5</color>
+    <color name="colorPrimaryDark">#152A9C</color>
+    <color name="colorSecondary">#000000</color>
+    <color name="colorSecondaryLight">#2c2c2c</color>
+    <color name="colorSecondaryDark">#cccccc</color>
+    <color name="colorAccent">#0A6FBF</color>
+    <color name="textOnPrimary">@color/colorSecondary</color>>
+    <color name="textOnSecondary">#151414</color>
+
+    <color name="white">#ffffff</color>
+
+    <color name="btn_sign_in_with_phone">#C20000</color>
+    <color name="btn_sign_in_with_google">#4285F4</color>
+    <color name="black">#0A0A0B</color>
+</resources>
