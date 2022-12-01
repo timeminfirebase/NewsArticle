@@ -1,10 +1,12 @@
 package com.news.newsarticle.view
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -20,6 +22,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.news.newsarticle.R
 import com.news.newsarticle.entity.Story
@@ -29,6 +33,7 @@ import kotlinx.coroutines.*
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.lang.reflect.Type
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -71,6 +76,8 @@ class MainActivity : AppCompatActivity() {
                 Collections.shuffle(topStories, Random(System.currentTimeMillis()))
                 storiesAdapter.notifyDataSetChanged()
             }
+
+
             loadData("top");
 
         } catch (ex: Exception) {
@@ -177,7 +184,7 @@ class MainActivity : AppCompatActivity() {
                     val storiesResponse = webService.getShowStories().await()
                     stories = storiesResponse.body() as List<Long>
                     Log.d("show story", stories.toString())
-                    toolbar?.title = "Watched Stories"
+                    toolbar?.title = "View Stories"
                 }else if (s.equals("job")) {
                     val storiesResponse = webService.getJobStories().await()
                     stories = storiesResponse.body() as List<Long>
@@ -198,6 +205,7 @@ class MainActivity : AppCompatActivity() {
                 storiesAdapter = StoriesAdapter(this@MainActivity, topStories)
                 recyclerView.adapter = storiesAdapter
                 storiesAdapter.notifyDataSetChanged()
+                saveArrayList(topStories,"story")
                 ll_progress!!.visibility = View.GONE
                 recyclerView.visibility = View.VISIBLE
 
@@ -208,6 +216,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         } else {
+
+            topStories=getArrayList("story")
+            Log.d("story",topStories.toString())
+
+            storiesAdapter = StoriesAdapter(this@MainActivity, topStories)
+            recyclerView.adapter = storiesAdapter
+            storiesAdapter.notifyDataSetChanged()
+            saveArrayList(topStories,"story")
+            ll_progress!!.visibility = View.GONE
+            recyclerView.visibility = View.VISIBLE
+
             Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show()
         }
     }
@@ -274,6 +293,25 @@ class MainActivity : AppCompatActivity() {
             @Suppress("DEPRECATION")
             return networkInfo.isConnected
         }
+    }
+    private fun saveArrayList(list: MutableList<Story>, key: String?) {
+        val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this@MainActivity)
+        val editor: SharedPreferences.Editor = prefs.edit()
+        val gson = Gson()
+        val json: String = gson.toJson(list)
+        editor.putString(key, json)
+        editor.apply()
+        Log.d("story", "savevd")
+
+    }
+
+    private fun getArrayList(key: String?): MutableList<Story> {
+        val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this@MainActivity)
+        val gson = Gson()
+        val json: String = prefs.getString(key, null)!!
+        val type: Type = object : TypeToken<MutableList<Story?>?>() {}.getType()
+        Log.d("story", "get")
+        return gson.fromJson(json, type)
     }
 
 }

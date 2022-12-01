@@ -33,14 +33,14 @@ class LauncherActivity : AppCompatActivity() {
             screenSize = getScreenSize()
             animateUI()
         }
-Log.d("test","")
+
         val splashTimeOut = 2000L
 
         Handler().postDelayed({
             lateinit var intent: Intent
 
-                intent = Intent(this@LauncherActivity, MainActivity::class.java)
-                intent.putExtra("isUserSignedIn", true)
+            intent = Intent(this@LauncherActivity, MainActivity::class.java)
+            intent.putExtra("isUserSignedIn", true)
 
             startActivity(intent)
             finish()
@@ -55,8 +55,6 @@ Log.d("test","")
     }
 
     // Get the SharedPreferences that stored true if the user was signed in last time or false if he signed out.
-
-
 
 
     private fun animateUI() {
