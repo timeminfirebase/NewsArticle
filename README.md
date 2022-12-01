@@ -98,4 +98,4 @@ Download List<Product> from webservice.
 Convert the List into Json String using new Gson(). toJson(medicineList, new TypeToken<List<Product>>(){}. getType())
 Save the converted string into SharePreferences as you do normally.
 
-
+Also geting stories list added filter and search option.
